@@ -38,6 +38,7 @@ export default function App() {
             <Route path="/compare" element={<ComparePage />} />
             <Route path="/timeline" element={<TimelinePage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/settings" element={<PrivacyPage />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/welcome" replace />} />
