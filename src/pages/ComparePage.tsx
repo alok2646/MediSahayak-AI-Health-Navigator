@@ -1,11 +1,19 @@
 import { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ComparisonTable from '../components/ComparisonTable';
 import { doctors } from '../data/doctors';
 
 export default function ComparePage() {
+  const location = useLocation();
   const navigate = useNavigate();
-  const [selected, setSelected] = useState<string[]>(['dr-ananya-sharma', 'dr-kavya-nair', 'dr-rahul-mehra']);
+  const [selected, setSelected] = useState<string[]>(() => {
+    const doctorIds = (location.state as { doctorIds?: unknown } | null)?.doctorIds;
+    if (Array.isArray(doctorIds)) {
+      const validIds = doctorIds.filter((id): id is string => typeof id === 'string' && doctors.some((doctor) => doctor.id === id)).slice(0, 3);
+      if (validIds.length) return validIds;
+    }
+    return ['dr-ananya-sharma', 'dr-kavya-nair', 'dr-rahul-mehra'];
+  });
 
   const comparisonDoctors = useMemo(
     () => doctors.filter((doctor) => selected.includes(doctor.id)),

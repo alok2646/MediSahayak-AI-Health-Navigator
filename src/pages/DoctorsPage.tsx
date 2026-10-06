@@ -39,7 +39,7 @@ export default function DoctorsPage() {
       <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div><p className="text-xs font-bold uppercase tracking-[0.14em] text-sky-700">Care finder</p><h1 className="mt-2 text-3xl font-black text-slate-900 sm:text-4xl">Find the right doctor</h1><p className="mt-2 text-slate-600">Search, filter and compare care options around you.</p></div>
-          {selectedDoctors.length > 0 && <button onClick={() => navigate('/compare')} className="rounded-xl bg-[#0f2a43] px-4 py-3 text-sm font-bold text-white hover:bg-[#173b5c]">Compare selected ({selectedDoctors.length})</button>}
+          {selectedDoctors.length > 0 && <button onClick={() => navigate('/compare', { state: { doctorIds: selectedDoctors } })} className="rounded-xl bg-[#0f2a43] px-4 py-3 text-sm font-bold text-white hover:bg-[#173b5c]">Compare selected ({selectedDoctors.length})</button>}
         </div>
         <div className="mt-6 flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3"><Search size={18} className="text-slate-400" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by doctor, specialty or hospital" className="w-full bg-transparent text-sm text-slate-700 outline-none" /></div>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

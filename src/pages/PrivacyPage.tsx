@@ -1,9 +1,9 @@
-import { ShieldCheck, Lock, BellRing, Database } from 'lucide-react';
+import { ShieldCheck, Lock, RotateCcw, Database } from 'lucide-react';
 
 const settings = [
-  { title: 'Consent-based sharing', detail: 'Your reports stay visible only when you choose to share them.', icon: Lock },
-  { title: 'Secure vault', detail: 'Medical records are organized in a privacy-first dashboard.', icon: Database },
-  { title: 'Smart reminders', detail: 'Appointment and follow-up reminders can be toggled on or off.', icon: BellRing },
+  { title: 'Consent-based AI sharing', detail: 'Assistant message text is sent to Google Gemini only after explicit session consent. Reports and records are never attached automatically.', icon: Lock },
+  { title: 'Demo health record vault', detail: 'Records are organized in this prototype; encrypted cloud storage and account access are not implemented.', icon: Database },
+  { title: 'Local demo workflows', detail: 'Appointments and care coordination entries use browser memory and reset on refresh. No real provider is notified.', icon: RotateCcw },
 ];
 
 export default function PrivacyPage() {
@@ -32,11 +32,12 @@ export default function PrivacyPage() {
       </section>
 
       <section className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-soft">
-        <h2 className="text-2xl font-black text-slate-900">Safety notes</h2>
+        <h2 className="text-2xl font-black text-slate-900">Privacy & safety notes</h2>
         <div className="mt-5 space-y-3 text-sm text-slate-700">
-          <div className="rounded-[22px] bg-amber-50 p-4">AI-generated health summary is for educational support only and does not replace clinician review.</div>
-          <div className="rounded-[22px] bg-sky-50 p-4">Verify doctor credentials and care facilities before booking any consultation or treatment.</div>
-          <div className="rounded-[22px] bg-emerald-50 p-4">Emergency symptoms should be assessed immediately by a qualified healthcare professional or local emergency service.</div>
+          <div className="rounded-[22px] bg-sky-50 p-4">The AI Assistant sends only a message you choose to submit, after consent, to Google Gemini for a response. Do not include names, contact details, patient IDs, or other identifying information.</div>
+          <div className="rounded-[22px] bg-slate-50 p-4">This prototype has no authentication or persistent encrypted medical-record storage. Demo records and care workflows are held in browser memory and are not connected to a real provider.</div>
+          <div className="rounded-[22px] bg-amber-50 p-4">AI-generated report summaries are educational support only and do not replace review by a qualified healthcare professional. Verify all demo provider credentials, fees, and availability.</div>
+          <div className="rounded-[22px] bg-red-50 p-4">Emergency symptoms need prompt professional assessment. Contact local emergency services or visit the nearest emergency department.</div>
         </div>
       </section>
     </div>

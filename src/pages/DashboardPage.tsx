@@ -1,4 +1,4 @@
-import { Activity, ArrowRight, Building2, CalendarDays, CheckCircle2, FileText, HeartPulse, MapPin, Stethoscope, UploadCloud } from 'lucide-react';
+import { Activity, ArrowRight, Banknote, Bot, Building2, CalendarDays, CheckCircle2, ClipboardList, Droplets, FileText, GitBranch, HeartPulse, MapPin, ShieldAlert, Stethoscope, UploadCloud } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useNavigate } from 'react-router-dom';
 import { recentReports } from '../data/reports';
@@ -14,6 +14,16 @@ const actions = [
   { title: 'Find Doctor', description: 'Match with a provider by need and location', icon: Stethoscope, to: '/doctors' },
   { title: 'Find Hospital', description: 'Explore nearby hospitals and care options', icon: Building2, to: '/hospitals' },
   { title: 'Doctor at Home', description: 'Request eligible care at your doorstep', icon: HeartPulse, to: '/home-visit' },
+];
+
+const careTools = [
+  { title: 'Ask MediSahayak', detail: 'General information and product guidance', to: '/assistant', icon: Bot },
+  { title: 'Digital OPD', detail: 'Prepare a printable demo registration', to: '/opd', icon: ClipboardList },
+  { title: 'Emergency assistance', detail: 'Prepare information for a clinician', to: '/emergency', icon: ShieldAlert },
+  { title: 'Payments', detail: 'Review and simulate demo invoices', to: '/payments', icon: Banknote },
+  { title: 'Blood bank', detail: 'Explore sample inventory and requests', to: '/blood-bank', icon: Droplets },
+  { title: 'Referrals', detail: 'Prepare a patient-consented demo referral', to: '/referrals', icon: GitBranch },
+  { title: 'Hospital workspace', detail: 'Open the provider-side ERP prototype', to: '/hospital-erp', icon: Building2 },
 ];
 
 export default function DashboardPage() {
@@ -33,7 +43,7 @@ export default function DashboardPage() {
             <h1 className="mt-2 text-3xl font-black tracking-tight text-white sm:text-4xl">Your health information, care options and appointments — all in one place.</h1>
             <p className="mt-4 max-w-xl text-sm leading-6 text-slate-300">Move from understanding a report to finding the right care with a guided, privacy-first experience.</p>
             <button onClick={() => navigate('/reports', { state: { demo: true } })} className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-bold text-[#0f2a43] shadow-sm hover:bg-sky-50">
-              <UploadCloud size={17} /> Try Full Demo <ArrowRight size={16} />
+              <UploadCloud size={17} /> TRY FULL DEMO <ArrowRight size={16} />
             </button>
           </div>
           <div className="grid min-w-[230px] grid-cols-2 gap-3">
@@ -53,6 +63,11 @@ export default function DashboardPage() {
             <div className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-sky-700">Explore <ArrowRight size={13} /></div>
           </button>
         ))}
+      </section>
+
+      <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Care coordination</p><h2 className="mt-1 text-2xl font-black text-slate-900">More ways to get support</h2></div><span className="rounded-full bg-slate-100 px-3 py-1.5 text-[10px] font-bold text-slate-600">Prototype workflows · Demo data</span></div>
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">{careTools.map(({ title, detail, to, icon: Icon }) => <button key={to} onClick={() => navigate(to)} className="group rounded-2xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-200 hover:bg-sky-50/50"><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-50 text-sky-700 group-hover:bg-sky-100"><Icon size={18} /></span><span className="mt-3 block text-sm font-bold text-slate-900">{title}</span><span className="mt-1 block text-xs leading-5 text-slate-500">{detail}</span></button>)}</div>
       </section>
 
       <section className="rounded-3xl border border-sky-100 bg-[#eef8fd] p-6 shadow-sm sm:p-7">

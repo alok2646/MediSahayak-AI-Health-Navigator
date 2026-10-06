@@ -1,4 +1,4 @@
-import { Activity, CalendarDays, ClipboardList, FileText, HeartPulse, Home, Hospital, MapPinned, ShieldCheck, Stethoscope, Wallet } from 'lucide-react';
+import { Activity, Banknote, CalendarDays, ClipboardList, FileText, HeartPulse, Home, Hospital, MapPinned, ShieldAlert, ShieldCheck, Stethoscope, Wallet, Workflow, Bot, Droplets, Building2 } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 const navItems = [
@@ -11,6 +11,13 @@ const navItems = [
   { to: '/affordable-care', label: 'Affordable Care', icon: Wallet },
   { to: '/appointments', label: 'Appointments', icon: CalendarDays },
   { to: '/timeline', label: 'Health Timeline', icon: Activity },
+  { to: '/assistant', label: 'AI Assistant', icon: Bot },
+  { to: '/opd', label: 'Digital OPD', icon: ClipboardList },
+  { to: '/emergency', label: 'Emergency Assistance', icon: ShieldAlert },
+  { to: '/payments', label: 'Payments', icon: Banknote },
+  { to: '/blood-bank', label: 'Blood Bank', icon: Droplets },
+  { to: '/referrals', label: 'Referrals', icon: Workflow },
+  { to: '/hospital-erp', label: 'Hospital ERP Demo', icon: Building2 },
   { to: '/privacy', label: 'Settings', icon: ShieldCheck },
 ];
 
@@ -27,7 +34,7 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <nav className="space-y-1.5">
+      <nav aria-label="Main navigation" className="max-h-[calc(100vh-280px)] space-y-1.5 overflow-y-auto pr-1">
         {navItems.map(({ to, label, icon: Icon }) => (
           <NavLink
             key={to}
